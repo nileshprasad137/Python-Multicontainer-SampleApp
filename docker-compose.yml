@@ -1,0 +1,20 @@
+version: "3.1"
+services:
+  app:
+    build: ./src/flask-app
+    depends_on:
+      - db
+    environment:
+      FLASK_APP: ./src/flask-app/main.py
+      FLASK_DEBUG: 1
+    ports:
+      - "5000:5000"
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./src/db:/docker-entrypoint-initdb.d/:ro

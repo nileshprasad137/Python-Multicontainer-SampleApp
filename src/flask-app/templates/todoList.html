@@ -1,0 +1,10 @@
+<table border="1">
+    <tr>
+        <th>Todo</th>
+    </tr>
+    {% for todo in todos %}
+    <tr>
+        <td>{{ todo.todoItem }}</td>
+    </tr>
+    {% endfor %}
+</table>
