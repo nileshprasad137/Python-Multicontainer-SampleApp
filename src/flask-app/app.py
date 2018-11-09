@@ -1,12 +1,15 @@
-from flask import Flask, render_template, redirect, request
-from flask_sqlalchemy import SQLAlchemy
 import os
+from flask import Flask
+from flask import Markup
+from flask import render_template
+from flask_sqlalchemy import SQLAlchemy
+import pymysql
 
 app = Flask(__name__)
 
-userpass = 'mysql+pymysql://root:root@localhost:3306/'
+# Configure MySQL connection.
+userpass = 'mysql+pymysql://root:root@172.21.0.2:3306/'
 dbname   = 'multicontainer_todoapp'
-
 # put them all together as a string that shows SQLAlchemy where the database is
 app.config['SQLALCHEMY_DATABASE_URI'] = userpass + dbname
 db = SQLAlchemy(app)
@@ -40,4 +43,4 @@ def create_note():
     return redirect("/todo")
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(host="127.0.0.1", port=80)

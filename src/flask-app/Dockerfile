@@ -1,7 +1,7 @@
 # Use an official Python runtime as an image
 FROM python:3.6.5
 
-EXPOSE 5000
+EXPOSE 80
 # set working directory
 WORKDIR /usr/src/app
 
@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 # add app
 COPY . /usr/src/app
 
-CMD ["python","main.py"]
+CMD python app.py
