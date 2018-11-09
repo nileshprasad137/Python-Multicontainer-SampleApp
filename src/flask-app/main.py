@@ -40,4 +40,4 @@ def create_note():
     return redirect("/todo")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5000)

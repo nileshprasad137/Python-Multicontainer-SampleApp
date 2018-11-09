@@ -1,20 +1,24 @@
 version: "3.1"
 services:
   app:
-    build: ./src/flask-app
-    depends_on:
-      - db
-    environment:
-      FLASK_APP: ./src/flask-app/main.py
-      FLASK_DEBUG: 1
+    build: src/flask-app/.    
     ports:
       - "5000:5000"
-
+    depends_on: 
+      - db
+    tty: true
+    
   db:
     image: mysql:5.7
     ports:
       - "32000:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
+
+    # First item in list is to persist data in containers. 
+    # And second in list is to initialise db inside container. 
     volumes:
-      - ./src/db:/docker-entrypoint-initdb.d/:ro
+      - ./src/db/db_data:/var/lib/mysql      
+      - ./src/db/dbinit:/docker-entrypoint-initdb.d/:ro 
+
+ 
