@@ -1,7 +1,7 @@
 # Use an official Python runtime as an image
 FROM python:3.6.5
 
-EXPOSE 80
+EXPOSE 5000
 # set working directory
 WORKDIR /usr/src/app
 

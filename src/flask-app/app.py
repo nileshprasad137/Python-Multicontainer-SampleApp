@@ -1,14 +1,12 @@
 import os
-from flask import Flask
-from flask import Markup
-from flask import render_template
+from flask import Flask, render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 import pymysql
 
 app = Flask(__name__)
 
 # Configure MySQL connection.
-userpass = 'mysql+pymysql://root:root@db:3306/'
+userpass = 'mysql+pymysql://root:root@172.21.0.2:3306/'
 # db above is the name of the service
 dbname   = 'multicontainer_todoapp'
 # put them all together as a string that shows SQLAlchemy where the database is
@@ -43,5 +41,6 @@ def create_note():
 
     return redirect("/todo")
 
+#   Note - "  host='0.0.0.0'  " is mandatory, if we want to access container from host's browser
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=80)
+    app.run(host='0.0.0.0', port=5000)
