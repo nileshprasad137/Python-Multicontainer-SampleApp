@@ -15,7 +15,8 @@ services:
       - "32000:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-
+      MYSQL_ROOT_HOST: 0.0.0.0
+      
     # First item in list is to persist data in containers. 
     # And second in list is to initialise db inside container. 
     volumes:

@@ -6,7 +6,7 @@ import pymysql
 app = Flask(__name__)
 
 # Configure MySQL connection.
-userpass = 'mysql+pymysql://root:root@172.21.0.2:3306/'
+userpass = 'mysql+pymysql://root:root@db:3306/'
 # db above is the name of the service
 dbname   = 'multicontainer_todoapp'
 # put them all together as a string that shows SQLAlchemy where the database is
